@@ -97,17 +97,15 @@
   /* ---------- Lightbox ---------- */
   .lightbox{
     position:fixed;inset:0;
-    background:rgba(8,10,9,0.88);
+    background:#000;
     display:none;
     align-items:center;justify-content:center;
-    padding:24px;
     z-index:50;
   }
   .lightbox.show{display:flex;}
   .lightbox img{
-    max-width:100%;max-height:100%;
-    border-radius:14px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    width:100%;height:100%;
+    object-fit:contain;
   }
 
   /* ---------- Bottom nav ---------- */
@@ -286,7 +284,7 @@
   <div class="toast" id="toast"></div>
 
   <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-    <img src="pass.png" alt="بطاقة دخول الإمتحان">
+    <img src="pass.jpeg" alt="بطاقة دخول الإمتحان">
   </div>
 
 </div>
