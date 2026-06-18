@@ -131,19 +131,6 @@
     box-shadow:0 6px 14px rgba(59,171,79,0.35);
   }
 
-  /* ---------- Toast ---------- */
-  .toast{
-    position:fixed;bottom:96px;left:50%;
-    transform:translate(-50%,12px);
-    background:#202428;color:#fff;
-    padding:10px 18px;border-radius:12px;
-    font-size:13px;opacity:0;
-    transition:all .25s ease;
-    pointer-events:none;
-    white-space:nowrap;
-    z-index:20;
-  }
-  .toast.show{opacity:1;transform:translate(-50%,0);}
 </style>
 </head>
 <body>
@@ -162,7 +149,7 @@
   </div>
 
   <!-- Notification -->
-  <div class="notif-card" onclick="showToast('قيد التطوير 🚧')">
+  <div class="notif-card">
     <div class="notif-icon">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
         <rect x="2" y="6" width="20" height="12" rx="2"/>
@@ -178,7 +165,7 @@
 
   <!-- Grid -->
   <div class="grid">
-    <div class="grid-card" onclick="showToast('قيد التطوير 🚧')">
+    <div class="grid-card">
       <svg width="58" height="58" viewBox="0 0 24 24">
         <path d="M12 3.2 2.4 8.2c-.5.27-.5 1 0 1.27L12 14.5l9.6-5.03c.5-.27.5-1 0-1.27L12 3.2Z" fill="currentColor"/>
         <path d="M6.5 11.6V16c0 1.66 2.46 3 5.5 3s5.5-1.34 5.5-3v-4.4L12 14.5l-5.5-2.9Z" fill="currentColor" opacity="0.78"/>
@@ -187,7 +174,7 @@
       </svg>
       <div class="grid-label">أكاديمي</div>
     </div>
-    <div class="grid-card" onclick="showToast('قيد التطوير 🚧')">
+    <div class="grid-card">
       <svg width="58" height="58" viewBox="0 0 24 24">
         <rect x="2.3" y="3.5" width="19.4" height="14" rx="2.4" fill="currentColor" opacity="0.14"/>
         <rect x="2.3" y="3.5" width="19.4" height="14" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.5"/>
@@ -199,14 +186,14 @@
       </svg>
       <div class="grid-label">لوحة التحكم</div>
     </div>
-    <div class="grid-card" onclick="showToast('قيد التطوير 🚧')">
+    <div class="grid-card">
       <svg width="58" height="58" viewBox="0 0 24 24">
         <circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/>
         <path d="M15.3 15.3l4.7 4.7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
       </svg>
       <div class="grid-label">طلباتي</div>
     </div>
-    <div class="grid-card" onclick="showToast('قيد التطوير 🚧')">
+    <div class="grid-card">
       <svg width="58" height="58" viewBox="0 0 24 24">
         <path d="M4.6 5.6h11.8L19.4 9v9.4a1 1 0 0 1-1 1H4.6a1 1 0 0 1-1-1V6.6a1 1 0 0 1 1-1Z" fill="currentColor" opacity="0.16" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
         <path d="M16.4 5.6V9h3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
@@ -249,7 +236,6 @@
     </button>
   </div>
 
-  <div class="toast" id="toast"></div>
 
 </div>
 
@@ -257,14 +243,6 @@
   function setActive(el){
     document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
     el.classList.add('active');
-  }
-  let toastTimer;
-  function showToast(msg){
-    const t = document.getElementById('toast');
-    t.textContent = msg;
-    t.classList.add('show');
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => t.classList.remove('show'), 1600);
   }
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
