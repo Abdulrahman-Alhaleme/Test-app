@@ -33,72 +33,9 @@
     max-width:440px;
     min-height:100vh;
     position:relative;
-    padding:14px 0 96px;
+    padding:0 0 96px;
   }
-
-  /* ---------- Hero ---------- */
-  .hero{
-    margin:0 16px;
-    height:260px;
-    border-radius:22px;
-    overflow:hidden;
-    position:relative;
-    box-shadow:var(--shadow);
-  }
-  .hero-img{width:100%;height:100%;object-fit:cover;display:block;}
-  .hero-overlay{
-    position:absolute;inset:0;
-    background:linear-gradient(to top, rgba(8,12,10,0.39) 0%, rgba(8,12,10,0.13) 48%, rgba(8,12,10,0) 78%);
-  }
-  .hero-text{
-    position:absolute;right:22px;left:22px;bottom:18px;
-    color:#fff;text-align:center;
-  }
-  .hero-greeting{font-size:29px;font-weight:800;text-shadow:0 1px 4px rgba(0,0,0,0.45);}
-  .hero-name{font-size:15px;font-weight:500;margin-top:6px;color:rgba(255,255,255,0.92);text-shadow:0 1px 4px rgba(0,0,0,0.45);}
-
-  /* ---------- Notification card ---------- */
-  .notif-card{
-    margin:16px 16px 0;
-    background:var(--card);
-    border-radius:18px;
-    box-shadow:var(--shadow);
-    padding:15px 18px;
-    display:flex;
-    align-items:center;
-    justify-content:flex-start;
-    gap:14px;
-  }
-  .notif-text{text-align:right;}
-  .notif-title{font-weight:700;font-size:15px;color:var(--green);}
-  .notif-desc{font-size:12.5px;color:var(--text-gray);margin-top:4px;}
-  .notif-icon{
-    width:46px;height:46px;border-radius:15px;
-    background:var(--green);
-    display:flex;align-items:center;justify-content:center;
-    flex-shrink:0;
-  }
-
-  /* ---------- Grid ---------- */
-  .grid{
-    margin:16px 16px 0;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:14px;
-  }
-  .grid-card{
-    background:var(--card);
-    border-radius:18px;
-    box-shadow:var(--shadow);
-    padding:30px 10px 24px;
-    display:flex;flex-direction:column;align-items:center;gap:14px;
-    text-align:center;
-    color:var(--green);
-    cursor:pointer;
-    transition:transform .15s ease;
-  }
-  .grid-card:active{transform:scale(0.96);}
-  .grid-label{font-weight:700;font-size:15px;color:var(--text-dark);}
+  .home-shot{width:100%;display:block;}
 
   /* ---------- Bottom nav ---------- */
   .bottom-nav{
@@ -125,11 +62,7 @@
     color:var(--text-gray);
   }
   .nav-item.active{color:var(--green);font-weight:700;}
-  .nav-item.active .nav-icon{
-    background:var(--green);color:#fff;
-    margin-top:-22px;
-    box-shadow:0 6px 14px rgba(59,171,79,0.35);
-  }
+  .nav-icon img{width:26px;height:26px;object-fit:contain;}
 
 </style>
 </head>
@@ -137,82 +70,13 @@
 
 <div class="app">
 
-  <!-- Hero -->
-  <div class="hero">
-    
-    <img src="hero.png" alt="صورة الجامعة" class="hero-img">
-    <div class="hero-overlay"></div>
-    <div class="hero-text">
-      <div class="hero-greeting">أهلا</div>
-      <div class="hero-name">عبدالرحمن عماد عبدالرحمن الحليمي</div>
-    </div>
-  </div>
-
-  <!-- Notification -->
-  <div class="notif-card">
-    <div class="notif-icon">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="2" y="6" width="20" height="12" rx="2"/>
-        <circle cx="12" cy="12" r="3"/>
-        <path d="M6 9v.01M18 15v.01"/>
-      </svg>
-    </div>
-    <div class="notif-text">
-      <div class="notif-title">تنبيهاتي</div>
-      <div class="notif-desc">لا مانع من دخول الطالب للإمتحان</div>
-    </div>
-  </div>
-
-  <!-- Grid -->
-  <div class="grid">
-    <div class="grid-card">
-      <svg width="58" height="58" viewBox="0 0 24 24">
-        <path d="M12 3.2 2.4 8.2c-.5.27-.5 1 0 1.27L12 14.5l9.6-5.03c.5-.27.5-1 0-1.27L12 3.2Z" fill="currentColor"/>
-        <path d="M6.5 11.6V16c0 1.66 2.46 3 5.5 3s5.5-1.34 5.5-3v-4.4L12 14.5l-5.5-2.9Z" fill="currentColor" opacity="0.78"/>
-        <path d="M20.2 9.6v5.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-        <circle cx="20.2" cy="16.4" r="1.3" fill="currentColor"/>
-      </svg>
-      <div class="grid-label">أكاديمي</div>
-    </div>
-    <div class="grid-card">
-      <svg width="58" height="58" viewBox="0 0 24 24">
-        <rect x="2.3" y="3.5" width="19.4" height="14" rx="2.4" fill="currentColor" opacity="0.14"/>
-        <rect x="2.3" y="3.5" width="19.4" height="14" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.5"/>
-        <path d="M8.2 14.2v-3.4a3 3 0 0 1 3-3v3.4l-3 3Z" fill="currentColor"/>
-        <circle cx="11.2" cy="10.8" r="3" fill="none" stroke="currentColor" stroke-width="1.3"/>
-        <rect x="15" y="11.2" width="2" height="3" fill="currentColor"/>
-        <rect x="18" y="9" width="2" height="5.2" fill="currentColor"/>
-        <path d="M9 20.5h6M12 17.5v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-      </svg>
-      <div class="grid-label">لوحة التحكم</div>
-    </div>
-    <div class="grid-card">
-      <svg width="58" height="58" viewBox="0 0 24 24">
-        <circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/>
-        <path d="M15.3 15.3l4.7 4.7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-      </svg>
-      <div class="grid-label">طلباتي</div>
-    </div>
-    <div class="grid-card">
-      <svg width="58" height="58" viewBox="0 0 24 24">
-        <path d="M4.6 5.6h11.8L19.4 9v9.4a1 1 0 0 1-1 1H4.6a1 1 0 0 1-1-1V6.6a1 1 0 0 1 1-1Z" fill="currentColor" opacity="0.16" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
-        <path d="M16.4 5.6V9h3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
-        <circle cx="8.6" cy="11.4" r="1.9" fill="currentColor"/>
-        <path d="M5.6 16.6c.4-1.9 1.8-3 3-3s2.6 1.1 3 3" stroke="currentColor" stroke-width="1.3" fill="none" stroke-linecap="round"/>
-        <path d="M13.6 10.6h3.4M13.6 13.4h2.4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
-      </svg>
-      <div class="grid-label">بطاقتي الجامعية</div>
-    </div>
-  </div>
+  <img src="home-content.jpeg" alt="الرئيسية" class="home-shot">
 
   <!-- Bottom nav -->
   <div class="bottom-nav">
     <button class="nav-item active" onclick="setActive(this)">
       <span class="nav-icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 11.5 12 4l8 7.5"/>
-          <path d="M6 10v9a1 1 0 0 0 1 1h3v-5h4v5h3a1 1 0 0 0 1-1v-9"/>
-        </svg>
+        <img src="home-icon.png" alt="الرئيسية">
       </span>
       <span>الرئيسية</span>
     </button>
