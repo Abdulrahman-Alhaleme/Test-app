@@ -102,9 +102,19 @@
     z-index:50;
   }
   .lightbox.show{display:flex;}
-  .lightbox canvas{
-    max-width:100%;
-    max-height:100%;
+  .lightbox iframe{
+    width:100%;height:100%;
+    border:none;
+  }
+  .lightbox-close{
+    position:absolute;top:14px;right:14px;
+    width:36px;height:36px;border-radius:50%;
+    background:rgba(255,255,255,0.18);
+    color:#fff;font-size:20px;line-height:36px;text-align:center;
+    cursor:pointer;z-index:51;
+    backdrop-filter:blur(6px);
+    border:1px solid rgba(255,255,255,0.3);
+    user-select:none;
   }
 
   /* ---------- Bottom nav ---------- */
@@ -267,19 +277,14 @@
     </button>
   </div>
 
-  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-    <canvas id="pdfCanvas"></canvas>
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" onclick="closeLightbox()">✕</span>
+    <iframe src="https://drive.google.com/file/d/1XZNDvP-Agb4xIh77fwyJ2Y1N0rFbd6dI/preview" allow="autoplay"></iframe>
   </div>
 
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script>
-  pdfjsLib.GlobalWorkerOptions.workerSrc =
-    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-
-  let pdfRendered = false;
-
   function setActive(el){
     document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
     el.classList.add('active');
@@ -287,24 +292,6 @@
   function openPass(e){
     e.stopPropagation();
     document.getElementById('lightbox').classList.add('show');
-    if(pdfRendered) return;
-    pdfjsLib.getDocument('pass.pdf').promise.then(function(pdf){
-      return pdf.getPage(1);
-    }).then(function(page){
-      var dpr    = window.devicePixelRatio || 1;
-      var maxW   = window.innerWidth;
-      var maxH   = window.innerHeight;
-      var vp1    = page.getViewport({scale:1});
-      var scale  = Math.min(maxW / vp1.width, maxH / vp1.height) * dpr;
-      var vp     = page.getViewport({scale: scale});
-      var canvas = document.getElementById('pdfCanvas');
-      canvas.width  = vp.width;
-      canvas.height = vp.height;
-      canvas.style.width  = (vp.width  / dpr) + 'px';
-      canvas.style.height = (vp.height / dpr) + 'px';
-      page.render({canvasContext: canvas.getContext('2d'), viewport: vp});
-      pdfRendered = true;
-    });
   }
   function closeLightbox(){
     document.getElementById('lightbox').classList.remove('show');
